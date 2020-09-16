@@ -5,6 +5,7 @@ import VueRouter  from 'vue-router'
 import store  from  './store/'
 import ajax  from  './config/ajax'
 import routes from './router/router.js'
+import './style/common.less'
 import './config/rem'
 
 Vue.config.productionTip = false

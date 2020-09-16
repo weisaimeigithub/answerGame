@@ -1,7 +1,7 @@
 <template>
    <section>
-      <header class="top-tips">
-           <span  class="num-tip" v-if="fatherComponent == 'home'">{{level}}</span>
+      <header class="top_tips">
+           <span  class="num-tip" v-if="fatherComponent == 'item'">{{level}}</span>
            <span  class="num-tip" v-if="fatherComponent == 'item'">题目{{itemNum}}</span>
       </header>
 	  <div v-if="fatherComponent == 'home'">
@@ -49,7 +49,7 @@ export default {
 	   //初始化信息
 	   if(this.fatherComponent == 'home'){
 		   this.initializeData();
-		   document.body.style.backgroundImage = 'url(./static/img/1-1.jpg)';
+		   document.body.style.backgroundImage = 'url(./images/1-1.jpg)';
 	   }
    },
   methods:{

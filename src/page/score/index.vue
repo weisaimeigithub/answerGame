@@ -4,7 +4,7 @@
          <header class="your_scores"><span class="score_num">{{score}}</span><span class="fenshu">分！</span></header>
          <div class="result_tip">{{scoreTips}}</div>
     </div>
-    <div class="share_button"></div>
+    <div class="share_button"  @click="showCover"></div>
     <div class="share_code">
         <header class="share_header">关注葡萄之家，获取答案。</header>
         <img src="../../images/4-4.png" height="212" width="212"  class="code_img">
@@ -31,7 +31,7 @@ export default{
     created(){
         this.computedScore();
         this.getScoreTip();
-        document.body.style.backgroundImage = 'url(./static/img/4-1.jpg)';
+        document.body.style.backgroundImage = 'url(../../images/4-1.jpg)';
     },
     methods:{
       //计算分数
