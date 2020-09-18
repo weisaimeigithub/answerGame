@@ -1,12 +1,15 @@
 import  Vue from  'vue'
 import Vuex from 'vuex'
-import  mutations from './mutations'
-import  actions from  './action'
+// import  mutations from './mutations'
+// import  actions from  './action'
 import ajax  from  '../config/ajax'
 
 Vue.use(Vuex)
-
-const state={
+//const ADD_ITEMNUM = 'ADD_ITEMNUM'
+//const REMBER_ANSWER = 'REMBER_ANSWER'
+const REMBER_TIME = 'REMBER_TIME'
+const INITIALIZE_DATA = 'INITIALIZE_DATA'
+const playGameModule={
     level:'第一周',//活动周数
     itemNum:1,//第几题
     allTime:0,//总共用时
@@ -171,7 +174,49 @@ const state={
 }
 
 export default  new Vuex.Store({
-    state,
-    actions,
-    mutations
+    state:playGameModule,
+    actions:{
+		addNum({commit,state},id){
+			debugger
+			//点击下一题，记录答案id,判断是否是最后一题，如果不是则跳转下一题
+			commit('remberAnswer',id);
+			if(state.itemNum<state.itemDetail.length){
+				commit('addItemNum',1);
+			}
+		},
+	
+		//初始化信息
+		initializeData({commit}){
+			commit('INITIALIZE_DATA');
+		}
+	},
+    mutations:{
+        //点击进入下一题
+//     [ADD_ITEMNUM](state,num){
+// 		state.itemNum += num;
+//  },
+	 
+      addItemNum(state,num){
+			state.itemNum += num;
+	  },
+
+ //记录答案
+  remberAnswer(state,id){
+	 state.answerid.push(id);
+ },
+
+ //记录做题时间
+ [REMBER_TIME](state){
+	 state.timer=setInterval(()=>{
+		 state.allTime++;
+	 },1000)
+ },
+
+ //初始化信息
+ [INITIALIZE_DATA](state){
+	  state.itemNum=1;
+	  state.allTime=0;
+	  state.answerid=[];
+ },
+	}
 })
