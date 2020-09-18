@@ -9,7 +9,7 @@
         <header class="share_header">关注葡萄之家，获取答案。</header>
         <img src="../../images/4-4.png" height="212" width="212"  class="code_img">
     </div>
-    <div class="share_cover">
+    <div class="share_cover" v-show="showHide">
          <img src="../../images/5-2.png" class="share_img">
     </div>
   </div>
@@ -36,7 +36,11 @@ export default{
     methods:{
       //计算分数
       computedScore(){
+          debugger
         this.answerid.forEach((item,index) =>{
+            debugger
+            //简洁代码的魅力就来自于rightAnswer可以用index来找寻每一项
+            //rightAnswer能够从后台接口中取出来，然后类似这种的匹配
             if(item == this.rightAnswer[index]){
                    this.score +=20;
             }

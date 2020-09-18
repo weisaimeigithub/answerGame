@@ -1,16 +1,20 @@
 <template>
    <section>
       <header class="top_tips">
+		    <!-- 通过给组件中传入值，然后判断到底是哪一个组件，再显示出来，共性部分抽取出来，然后就是能够组成一个组件 -->
            <span  class="num_tip" v-if="fatherComponent == 'home'">{{level}}</span>
            <span  class="num_tip" v-if="fatherComponent == 'item'">题目{{itemNum}}</span>
       </header>
 	  <div v-if="fatherComponent == 'home'">
           <div class="home_logo item_container_style"></div>
+		  <!--点击开始就直接跳转到item组件中，router-link就能够转换为a标签-->
+		  <!--因为页面具有共性，所以把这结果路由跳转页面都写到一个组件中就可以了-->
 		  <router-link to="item"  class="start button_style"></router-link>
 	  </div>
       <div   v-if="fatherComponent == 'item'">
            <div class="item_back item_container_style">
                 <div  class="item_list_container"  v-if="itemDetail.length>0">
+					   <!--抽象思维：把握共性：随着题目itemNum变化，题目中的内容也跟着变化-->
                        <header class="item_title">{{itemDetail[itemNum-1].topic_name}}</header>
                        <ul>
                           <li  v-for="(item,index) in  itemDetail[itemNum-1].topic_answer" @click="choosed(index,item.topic_answer_id)" :key="index" class="item_list">
@@ -58,6 +62,7 @@ export default {
 
 	  //点击下一题
 	  nextItem(){
+		  debugger
           if(this.chooseNum !==null){
 			  this.chooseNum = null;
 			  //保存答案，题目索引加一，条到下一题
@@ -69,6 +74,7 @@ export default {
 
 	  //索引0-3对应答案A-B
 	  chooseType:type =>{
+		  debugger
 		  switch(type){
 			  case 0:return 'A';
 			  case 1:return 'B';
@@ -78,6 +84,7 @@ export default {
   },
   //选中的答案信息
   choosed(type,id){
+	  debugger
 	  this.chooseNum = type;
 	  this.choosedId = id;
 	  
@@ -85,9 +92,12 @@ export default {
 
   //到达最后一题，交卷，请空定时器，跳转分数页面
   submitAnswer(){
+	  debugger
 	  if(this.choosedNum !==null){
 		  this.addNum(this.choosedId)
 		  clearInterval(this.timer)
+		  //跳转到不同的url，这个方法会想history栈添加一个记录，点击后退会返回到上一个页面
+		  //什么叫做刻意练习，刻意练习就是自己重头到位做一遍，基本上前端不错了，懒，就是不想自己来，那么基本上肯定不行的
 		  this.$router.push('score')
 	  }else{
 		  alert('您还没有选择答案哦')
