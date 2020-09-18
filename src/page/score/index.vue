@@ -36,7 +36,6 @@ export default{
     methods:{
       //计算分数
       computedScore(){
-          debugger
         this.answerid.forEach((item,index) =>{
             debugger
             //简洁代码的魅力就来自于rightAnswer可以用index来找寻每一项

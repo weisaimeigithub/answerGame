@@ -48,7 +48,7 @@ const playGameModule={
 	}, {
 		"topic_id": 21,
 		"active_topic_id": 4,
-		"type": "MORE",
+		"type": "Two",
 		"topic_name": "题目二",
 		"active_id": 1,
 		"active_title": "欢乐星期五标题",
@@ -79,7 +79,7 @@ const playGameModule={
 	}, {
 		"topic_id": 21,
 		"active_topic_id": 4,
-		"type": "MORE",
+		"type": "three",
 		"topic_name": "题目三",
 		"active_id": 1,
 		"active_title": "欢乐星期五标题",
@@ -110,7 +110,7 @@ const playGameModule={
 	}, {
 		"topic_id": 21,
 		"active_topic_id": 4,
-		"type": "MORE",
+		"type": "four",
 		"topic_name": "题目四",
 		"active_id": 1,
 		"active_title": "欢乐星期五标题",
@@ -141,7 +141,7 @@ const playGameModule={
 	}, {
 		"topic_id": 21,
 		"active_topic_id": 4,
-		"type": "MORE",
+		"type": "five",
 		"topic_name": "题目五",
 		"active_id": 1,
 		"active_title": "欢乐星期五标题",
@@ -177,7 +177,6 @@ export default  new Vuex.Store({
     state:playGameModule,
     actions:{
 		addNum({commit,state},id){
-			debugger
 			//点击下一题，记录答案id,判断是否是最后一题，如果不是则跳转下一题
 			commit('remberAnswer',id);
 			if(state.itemNum<state.itemDetail.length){
@@ -190,6 +189,7 @@ export default  new Vuex.Store({
 			commit('INITIALIZE_DATA');
 		}
 	},
+	//同步方法
     mutations:{
         //点击进入下一题
 //     [ADD_ITEMNUM](state,num){

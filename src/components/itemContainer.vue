@@ -51,6 +51,7 @@ export default {
 
    created(){
 	   //初始化信息
+	   //数据的初始化---流转--还有一些变量的定义，为什么要定这几个变量，如果给你这个业务，你是不是能够不看这个代码就能够知道需要哪些变量--如何进行合理的筛分的呢
 	   if(this.fatherComponent == 'home'){
 		   this.initializeData();
 	   }
@@ -62,7 +63,6 @@ export default {
 
 	  //点击下一题
 	  nextItem(){
-		  debugger
           if(this.chooseNum !==null){
 			  this.chooseNum = null;
 			  //保存答案，题目索引加一，条到下一题
@@ -84,7 +84,6 @@ export default {
   },
   //选中的答案信息
   choosed(type,id){
-	  debugger
 	  this.chooseNum = type;
 	  this.choosedId = id;
 	  
